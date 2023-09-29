@@ -19,6 +19,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
+    - run: |
+       git fetch --prune --unshallow
     - name: Set up Python 3.10
       uses: actions/setup-python@v3
       with:
@@ -45,5 +47,5 @@ jobs:
       if: github.ref == 'refs/heads/main' && job.status == 'success'
       run: |
         git remote add heroku https://heroku:fb2827a0-37c2-415a-b003-c202d0bb9c05@git.heroku.com/radiant-sea-00043.git
-        git push heroku HEAD:master -f 
+        git push heroku HEAD:main -f 
         
